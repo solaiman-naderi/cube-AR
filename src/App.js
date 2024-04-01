@@ -1,21 +1,22 @@
-import { VRButton, ARButton, XR, Controllers, Hands } from "@react-three/xr";
-import { Canvas } from "@react-three/fiber";
+const Cube = () => {
+  return (
+    <a-entity
+      geometry="primitive: box"
+      position="0 0 -5"
+      material="color: #EF2D5E"
+    ></a-entity>
+  );
+};
 
 function App() {
   return (
     <>
-      <VRButton />
-      <ARButton />
-      <Canvas>
-        <XR>
-          <Controllers />
-          <Hands />
-          <mesh>
-            <boxGeometry />
-            <meshBasicMaterial color="blue" />
-          </mesh>
-        </XR>
-      </Canvas>
+      <div className="App">
+        <a-scene>
+          <a-camera></a-camera>
+          <Cube />
+        </a-scene>
+      </div>
     </>
   );
 }
