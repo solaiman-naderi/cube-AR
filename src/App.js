@@ -1,16 +1,4 @@
 import React, { useEffect } from "react";
-import "aframe";
-import { Entity, Scene } from "aframe-react";
-
-const Cube = () => {
-  return (
-    <Entity
-      geometry={{ primitive: "box" }}
-      position={{ x: 0, y: 0, z: -5 }}
-      material={{ color: "#EF2D5E" }}
-    />
-  );
-};
 
 function App() {
   useEffect(() => {
@@ -22,10 +10,12 @@ function App() {
 
   return (
     <div className="App">
-      <Scene>
-        <Entity camera />
-        <Cube />
-      </Scene>
+      <a-scene embedded arjs="trackingMethod: best;">
+        <a-marker preset="hiro">
+          <a-box color="red" scale="0.5 0.5 0.5"></a-box>
+        </a-marker>
+        <a-entity camera></a-entity>
+      </a-scene>
     </div>
   );
 }
