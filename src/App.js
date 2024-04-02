@@ -13,7 +13,8 @@ function App() {
 
   return (
     <>
-      <VRButton />
+      <ARButton />
+      {/* <VRButton /> */}
 
       <Canvas style={{ height: "100vh", width: "100vw" }}>
         <XR>
@@ -22,7 +23,7 @@ function App() {
 
           <OrbitControls />
           <ambientLight />
-          <mesh>
+          <mesh position={[0, 0, -5]}>
             <boxGeometry args={[2, 2, 2]} />
             <meshStandardMaterial color={"red"} />
           </mesh>
