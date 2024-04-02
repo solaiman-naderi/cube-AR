@@ -1,4 +1,7 @@
 import React, { useEffect } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import { VRButton, ARButton, XR, Controllers, Hands } from "@react-three/xr";
 
 function App() {
   useEffect(() => {
@@ -9,14 +12,23 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <a-scene embedded arjs="trackingMethod: best;">
-        <a-marker preset="hiro">
-          <a-box color="red" scale="0.5 0.5 0.5"></a-box>
-        </a-marker>
-        <a-entity camera></a-entity>
-      </a-scene>
-    </div>
+    <>
+      <VRButton />
+
+      <Canvas style={{ height: "100vh", width: "100vw" }}>
+        <XR>
+          <color attach={"background"} args={["#011"]} />
+          <Hands />
+
+          <OrbitControls />
+          <ambientLight />
+          <mesh>
+            <boxGeometry args={[2, 2, 2]} />
+            <meshStandardMaterial color={"red"} />
+          </mesh>
+        </XR>
+      </Canvas>
+    </>
   );
 }
 
